@@ -1,118 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
   <title>doc_sql.md</title>
-  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     :root {
-      --bg-color-light: #ffffff;
-      --text-color-light: #000000;
-      --bg-color-dark: #1e1e1e;
-      --text-color-dark: #ffffff;
+      --bg-color: #ffffff;
+      --text-color: #000000;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif;
-      padding: 0 26px;
-      line-height: 1.6;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       transition: background-color 0.3s, color 0.3s;
-    }
-
-    .light-mode {
-      background-color: var(--bg-color-light);
-      color: var(--text-color-light);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Ubuntu", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
     }
 
     .dark-mode {
-      background-color: var(--bg-color-dark);
-      color: var(--text-color-dark);
+      --bg-color: #1e1e1e;
+      --text-color: #ffffff;
     }
 
-    pre {
-      background-color: #2d2d2d;
-      color: #dcdcdc;
-      padding: 1em;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-
-    code {
-      font-family: monospace;
-    }
-
-    blockquote {
-      border-left: 4px solid #007acc;
-      padding-left: 12px;
-      margin: 1em 0;
-      background-color: rgba(0, 122, 204, 0.1);
-    }
-
-    h1, h2 {
-      border-bottom: 1px solid #ccc;
-    }
-
-    #toggle-theme {
+    #dark-mode-toggle {
       position: fixed;
       top: 10px;
       right: 10px;
-      padding: 10px 16px;
+      padding: 8px 14px;
+      font-size: 14px;
+      background-color: #444;
+      color: white;
       border: none;
       border-radius: 6px;
-      background-color: #444;
-      color: #fff;
       cursor: pointer;
-      font-size: 14px;
-      z-index: 1000;
+      z-index: 999;
     }
 
-    #toggle-theme:hover {
-      background-color: #666;
+    #dark-mode-toggle:hover {
+      background-color: #007acc;
+    }
+
+    h1, h2, h3 {
+      color: var(--text-color);
+      border-bottom: 1px solid var(--text-color);
+      padding-bottom: 4px;
+      margin-top: 32px;
+    }
+
+    blockquote {
+      background: rgba(127, 127, 127, 0.1);
+      border-left: 5px solid rgba(0, 122, 204, 0.5);
+      padding: 10px 20px;
+      margin: 20px 0;
+    }
+
+    pre {
+      background-color: #f8f8f8;
+      border: 1px solid #ccc;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 6px;
+    }
+
+    .dark-mode pre {
+      background-color: #2e2e2e;
+      border-color: #555;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid var(--text-color);
+      margin: 40px 0;
+    }
+
+    ul {
+      padding-left: 20px;
     }
   </style>
 </head>
-<body class="light-mode">
-  <button id="toggle-theme">🌙 Modo oscuro</button>
+<body>
 
-  <h1>0. Descripción de la empresa</h1>
+  <button id="dark-mode-toggle">🌓 Modo Oscuro</button>
+
+  <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggleBtn.textContent = document.body.classList.contains('dark-mode')
+        ? '🌞 Modo Claro'
+        : '🌓 Modo Oscuro';
+    });
+  </script>
+
+  <h1 id="0-descripción-de-la-empresa">0. Descripción de la empresa</h1>
   <h2>Información sobre la empresa</h2>
   <blockquote>
     <p>La empresa pertenece al sector del desarrollo de software orientado a cadenas hoteleras. La organización se estructura en: Dirección, Administración, IT, Desarrollo, Consultoría y Soporte. Actualmente, formo parte del departamento de IT.</p>
   </blockquote>
 
-  <h1>1. Mi puesto</h1>
-  <blockquote><strong>Técnico de IT</strong></blockquote>
+  <h1 id="1-mi-puesto">1. Mi puesto</h1>
+  <blockquote><p><strong>Técnico de IT</strong></p></blockquote>
 
   <h2>¿Qué se esperaba de ti? ¿Cuáles eran tus funciones al inicio?</h2>
   <blockquote>
     <p>Se esperaba que asumiera las tareas y responsabilidades relacionadas con la administración de sistemas de la empresa, así como ofrecer soporte en los conflictos entre nuestro software (Avalon) y los sistemas de los clientes (infraestructura, conectividad, despliegue, impresión, etc.).</p>
   </blockquote>
 
-  <h2>¿Qué pensabas de la empresa al principio (miedo, incertidumbre, presión, emoción...)? ¿Y ahora? ¿Ha cambiado algo?</h2>
+  <h2>¿Qué pensabas de la empresa al principio? ¿Y ahora? ¿Ha cambiado algo?</h2>
   <blockquote>
     <p>Desde el principio me pareció un lugar con buen ambiente de trabajo, y hasta el día de hoy sigue siendo así.</p>
   </blockquote>
 
   <h2>¿Piensas lo mismo de la empresa?</h2>
-  <blockquote>
-    <p>Sí, mi opinión se mantiene desde el inicio.</p>
-  </blockquote>
+  <blockquote><p>Sí, mi opinión se mantiene desde el inicio.</p></blockquote>
 
   <h2>¿Haces ahora lo mismo que el primer mes?</h2>
+  <blockquote><p>No, actualmente tengo responsabilidades mayores.</p></blockquote>
+
+  <hr>
+
+  <h1 id="2-documentación">2. 📄 Documentación</h1>
+  <h2>¿Cómo has documentado lo aprendido?</h2>
   <blockquote>
-    <p>No, actualmente tengo responsabilidades mayores.</p>
+    <p>He documentado todo a través de Markdown en VS Code. Desde cómo se reinician los servicios de SQL Server, hasta cómo funcionan los scripts para depurar errores de conectividad o impresión. Todo está almacenado en una carpeta de Google Drive compartida con el departamento de IT.</p>
+  </blockquote>
+
+  <h2>¿Tienes todo lo aprendido en algún sitio?</h2>
+  <blockquote><p>Sí, está todo registrado en archivos `.md` organizados por temas y tareas.</p></blockquote>
+
+  <h2>¿Qué documentación crees que debería existir para facilitar la incorporación de nuevos trabajadores?</h2>
+  <blockquote>
+    <p>Un manual de operaciones internas: cómo se gestionan los accesos remotos, cómo se interactúa con el software Avalon, procedimientos comunes para fallos de red, despliegue y actualizaciones.</p>
   </blockquote>
 
   <hr>
 
-  <script>
-    const btn = document.getElementById("toggle-theme");
-    const body = document.body;
+  <h1 id="3-tecnologías">3. 🧰 Tecnologías utilizadas</h1>
+  <ul>
+    <li>SQL Server</li>
+    <li>PowerShell</li>
+    <li>Active Directory</li>
+    <li>Herramientas de virtualización (Hyper-V)</li>
+    <li>Conectividad RDP/VPN</li>
+    <li>Google Workspace</li>
+  </ul>
 
-    btn.addEventListener("click", () => {
-      const isDark = body.classList.toggle("dark-mode");
-      body.classList.toggle("light-mode", !isDark);
-      btn.textContent = isDark ? "☀️ Modo claro" : "🌙 Modo oscuro";
-    });
-  </script>
+  <hr>
+
+  <h1 id="4-evaluación-final">4. 📝 Evaluación final</h1>
+  <h2>¿Qué es lo que más te ha gustado?</h2>
+  <blockquote><p>La autonomía que he tenido para aprender y trabajar por mi cuenta, pero con el respaldo del equipo siempre disponible.</p></blockquote>
+
+  <h2>¿Qué es lo que menos te ha gustado?</h2>
+  <blockquote><p>Las incidencias repetitivas de algunos hoteles que no siguen nuestras recomendaciones técnicas.</p></blockquote>
+
+  <h2>¿Has aprendido?</h2>
+  <blockquote><p>Muchísimo. Especialmente sobre administración de redes, scripting, y resolución de conflictos reales en entornos de producción.</p></blockquote>
+
+  <h2>¿Has aportado algo al lugar donde has estado?</h2>
+  <blockquote><p>Sí, documentación nueva, automatización de tareas, y soporte proactivo al equipo.</p></blockquote>
+
+  <h2>¿Te ves trabajando en esta empresa en el futuro?</h2>
+  <blockquote><p>Sin duda alguna.</p></blockquote>
+
+  <h2>¿Te ha servido para aprender cosas nuevas?</h2>
+  <blockquote><p>Sí, y me ha motivado a seguir especializándome en ciberseguridad dentro de la rama de sistemas.</p></blockquote>
+
 </body>
 </html>
